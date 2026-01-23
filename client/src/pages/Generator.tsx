@@ -1,0 +1,10 @@
+
+const Generator = () => {
+  return (
+    <div>
+      <h1>Generator Page</h1>
+    </div>
+  )
+}
+
+export default Generator
