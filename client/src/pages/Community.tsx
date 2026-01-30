@@ -24,12 +24,17 @@ const Community = () => {
   ) : (
     <div className="min-h-screen text-white p-6 md:p-12 my-28">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-12">
-          <h1 className="text-3xl md:text-4xl font-semibold mb-4">
-            Community
-          </h1>
+        <header className="max-w-6xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-semibold mb-4">Community</h1>
           <p className="text-gray-400">See what others are creating with UGC.ai</p>
         </header>
+
+        {/* projects list */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+          {projects.map((project) => (
+            <div></div>
+          ))}
+        </div>
       </div>
     </div>
   )
