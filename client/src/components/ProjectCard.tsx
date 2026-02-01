@@ -1,20 +1,20 @@
-import type React from "react"
-import type { Project } from "../types"
-import { useNavigate } from "react-router-dom"
-import { useState } from "react"
-import { EllipsisIcon, ImageIcon, Loader2Icon } from "lucide-react"
+import type React from "react";
+import type { Project } from "../types";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { EllipsisIcon, ImageIcon, Loader2Icon } from "lucide-react";
 
 const ProjectCard = ({
   gen,
   setGenerations,
   forCommunity = false,
 }: {
-  gen: Project
-  setGenerations: React.Dispatch<React.SetStateAction<Project[]>>
-  forCommunity?: boolean
+  gen: Project;
+  setGenerations: React.Dispatch<React.SetStateAction<Project[]>>;
+  forCommunity?: boolean;
 }) => {
-  const navigate = useNavigate()
-  const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div key={gen.id} className="mb-4 break-inside-avoid">
@@ -71,41 +71,34 @@ const ProjectCard = ({
 
           {/* Actions menu */}
           {!forCommunity && (
-            <div
-              className="
-                absolute right-3 top-3
-                flex items-start gap-2
-                transition
-                sm:opacity-0 sm:group-hover:opacity-100
-              "
-              onMouseEnter={() => setMenuOpen(true)}
-              onMouseLeave={() => setMenuOpen(false)}
-            >
-              <button
-                type="button"
-                className="bg-black/30 rounded-full p-1 hover:bg-black/50"
-              >
-                <EllipsisIcon className="size-6 text-white" />
-              </button>
+  <div
+    className="absolute right-3 top-3 z-50"
+    onMouseEnter={() => setMenuOpen(true)}
+    onMouseLeave={() => setMenuOpen(false)}
+  >
+    <EllipsisIcon className="bg-black/60 text-white rounded-full p-1 size-7 cursor-pointer" />
 
-              {menuOpen && (
-                <ul className="absolute right-0 mt-8 w-40 bg-black/70 backdrop-blur text-white border border-gray-500/40 rounded-lg shadow-lg py-1 z-20">
-                  {gen.generatedImage && (
-                    <li>
-                      <a
-                        href={gen.generatedImage}
-                        download
-                        className="flex gap-2 items-center px-4 py-2 text-xs hover:bg-white/10"
-                      >
-                        <ImageIcon size={14} />
-                        Download Image
-                      </a>
-                    </li>
-                  )}
-                </ul>
-              )}
-            </div>
-          )}
+    <ul
+      className={`mt-2 w-40 text-xs bg-black/80 rounded-lg shadow-md py-1 ${
+        menuOpen ? "block" : "hidden"
+      }`}
+    >
+      {gen.generatedImage && (
+        <li>
+          <a
+            href={gen.generatedImage}
+            download
+            className="flex gap-2 items-center px-4 py-2 hover:bg-white/10"
+          >
+            <ImageIcon size={14} />
+            Download Image
+          </a>
+        </li>
+      )}
+    </ul>
+  </div>
+)}
+
 
           {/* Source images */}
           <div className="absolute right-3 bottom-3 flex">
@@ -157,14 +150,12 @@ const ProjectCard = ({
           )}
 
           {gen.userPrompt && (
-            <div className="mt-3 text-xs text-gray-300">
-              {gen.userPrompt}
-            </div>
+            <div className="mt-3 text-xs text-gray-300">{gen.userPrompt}</div>
           )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectCard
+export default ProjectCard;
