@@ -71,34 +71,34 @@ const ProjectCard = ({
 
           {/* Actions menu */}
           {!forCommunity && (
-  <div
-    className="absolute right-3 top-3 z-50"
-    onMouseEnter={() => setMenuOpen(true)}
-    onMouseLeave={() => setMenuOpen(false)}
-  >
-    <EllipsisIcon className="bg-black/60 text-white rounded-full p-1 size-7 cursor-pointer" />
+            <div
+              className="absolute right-3 top-3 z-20"
+              onMouseEnter={() => setMenuOpen(true)}
+              onMouseLeave={() => setMenuOpen(false)}
+            >
+              {/* stays in layout, only opacity changes */}
+              <EllipsisIcon className="bg-black/60 text-white rounded-full p-1 size-7 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity" />
 
-    <ul
-      className={`mt-2 w-40 text-xs bg-black/80 rounded-lg shadow-md py-1 ${
-        menuOpen ? "block" : "hidden"
-      }`}
-    >
-      {gen.generatedImage && (
-        <li>
-          <a
-            href={gen.generatedImage}
-            download
-            className="flex gap-2 items-center px-4 py-2 hover:bg-white/10"
-          >
-            <ImageIcon size={14} />
-            Download Image
-          </a>
-        </li>
-      )}
-    </ul>
-  </div>
-)}
-
+              <ul
+                className={`absolute right-0 mt-2 w-40 text-xs bg-black/80 rounded-lg shadow-md py-1 ${
+                  menuOpen ? "block" : "hidden"
+                }`}
+              >
+                {gen.generatedImage && (
+                  <li>
+                    <a
+                      href={gen.generatedImage}
+                      download
+                      className="flex gap-2 items-center px-4 py-2 hover:bg-white/10"
+                    >
+                      <ImageIcon size={14} />
+                      Download Image
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
 
           {/* Source images */}
           <div className="absolute right-3 bottom-3 flex">
