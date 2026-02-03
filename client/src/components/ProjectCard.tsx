@@ -2,7 +2,8 @@ import type React from "react";
 import type { Project } from "../types";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { EllipsisIcon, ImageIcon, Loader2Icon } from "lucide-react";
+import { EllipsisIcon, ImageIcon, Loader2Icon, Share2Icon } from "lucide-react";
+import { button } from "framer-motion/client";
 
 const ProjectCard = ({
   gen,
@@ -50,9 +51,10 @@ const ProjectCard = ({
           )}
 
           {!gen.generatedImage && !gen.generatedVideo && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-              <Loader2Icon className="size-7 animate-spin" />
-            </div>
+            <button onClick={() => navigator.share({url: gen.generatedVideo || gen.generatedImage, title: gen.productName, text: gen.productDescription})} className="w-full flex gap-2 items-center px-4 py-2 hover:bg-black/10 cursor-pointer">
+              <Share2Icon size={14} />
+              Share
+            </button>
           )}
 
           {/* Status badges */}
